@@ -1,24 +1,38 @@
-<template>
-  <v-datetime-picker v-model="selectedDate" @input="onDateSelected"></v-datetime-picker>
-</template>
 <script setup lang="ts">
-import {defineEmits, onMounted, ref} from 'vue'
+import { defineEmits, onMounted, ref, watch } from "vue";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+import { MAX_DATE, MIN_DATE } from "../utils.ts";
 
 interface IProps {
-    initialDate: Date
+  initialDate: Date | null;
 }
+const maxDate = MAX_DATE;
+const minDate = MIN_DATE;
 const props = withDefaults(defineProps<IProps>(), {
-    initialDate: new Date()
-})
-const { emit } = defineEmits(['onDataChange'])
+  initialDate: null,
+});
 
-const selectedDate = ref<Date>(props.initialDate)
+const emit = defineEmits(["onDataChange"]);
+const startDate = ref(new Date(minDate));
+const selectedDate = ref<Date | null>(props.initialDate);
 
-onMounted(()=>{
-    console.log('datePicker')
-})
+onMounted(() => {
+  console.log("datePicker");
+});
+
 const onDateSelected = (date: Date) => {
-  selectedDate.value = date
-  emit('onDataChange', date)
-}
+  selectedDate.value = date;
+  emit("onDataChange", date);
+};
+watch(selectedDate, onDateSelected);
 </script>
+<template>
+  <VueDatePicker
+    v-model="selectedDate"
+    :enable-time-picker="false"
+    :max-date="maxDate"
+    :min-date="minDate"
+    :start-date="startDate"
+  ></VueDatePicker>
+</template>
