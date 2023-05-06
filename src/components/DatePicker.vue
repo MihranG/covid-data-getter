@@ -30,5 +30,6 @@ watch(selectedDate, onDateSelected);
     :max-date="maxDate"
     :min-date="minDate"
     :start-date="startDate"
+    placeholder="Pick a date"
   ></VueDatePicker>
 </template>
