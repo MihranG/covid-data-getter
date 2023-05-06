@@ -1,4 +1,4 @@
-# Covid Data showing with vue3 , vuetify and express.js backenf
+# Covid Data showing with vue3 , vuetify and express.js backend
 
 
 ## For Running app
