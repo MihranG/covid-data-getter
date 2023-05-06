@@ -26,3 +26,4 @@ export const prepareDataForTable = ({cases, outcomes,testing}: ISingleDayData): 
     recovered: null
   }
 }
+
