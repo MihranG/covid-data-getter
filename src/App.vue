@@ -30,7 +30,7 @@ function onDataSelected(data: Date) {
         <v-main style="min-height: 300px">
           <v-container>
             <v-row justify="center" no-gutters>
-              <v-col cols="6">
+              <v-col cols="12">
                 <CovidData v-if="selectedDate" :selected-date="selectedDate" />
               </v-col>
             </v-row>

@@ -1,11 +1,12 @@
+import {ISingleDayData} from "./types.ts";
+
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
-export const getDataByDate = async (dateString: string | null) => {
+export const getDataByDate = async (dateString: string | null): Promise<ISingleDayData | undefined> => {
   try {
     console.log(11, baseUrl);
     const dataStream = await fetch(`${baseUrl}/covid?d=${dateString}`);
-    const data = await dataStream.json();
-    console.log("data", data);
+    return await dataStream.json()
   } catch (e) {
     console.log(e);
   }

@@ -1,3 +1,5 @@
+import {ISingleDayData, ITableData} from "./types.ts";
+
 export const MAX_DATE: string = import.meta.env.VITE_MAX_DATE;
 export const MIN_DATE: string = import.meta.env.VITE_MIN_DATE;
 
@@ -10,3 +12,17 @@ export const getDateString = (date: Date): string => {
 
   return `${dateNew}-${monthNew}-${date.getFullYear()}`;
 };
+
+
+export const prepareDataForTable = ({cases, outcomes,testing}: ISingleDayData): ITableData =>{
+  const {hospitalized, death} = outcomes
+  return {
+    cases: cases.total.value,
+    tests: testing.total.value,
+    death: death.total.value,
+    hospitalized: hospitalized.currently.value,
+    inIcu:  hospitalized.in_icu.currently.value,
+    onVentilator: hospitalized.on_ventilator.currently.value,
+    recovered: null
+  }
+}
