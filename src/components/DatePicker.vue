@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, onMounted, ref, watch } from "vue";
+import { defineEmits, ref, watch } from "vue";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { MAX_DATE, MIN_DATE } from "../utils.ts";
@@ -16,10 +16,6 @@ const props = withDefaults(defineProps<IProps>(), {
 const emit = defineEmits(["onDataChange"]);
 const startDate = ref(new Date(minDate));
 const selectedDate = ref<Date | null>(props.initialDate);
-
-onMounted(() => {
-  console.log("datePicker");
-});
 
 const onDateSelected = (date: Date) => {
   selectedDate.value = date;

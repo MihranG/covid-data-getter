@@ -10,7 +10,7 @@
     "dev": "concurrently 'npm:dev:front' 'npm:dev:backend'",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint:js": "eslint src --ext .ts,.vue",
+    "lint": "eslint src --ext .ts,.vue",
     "format": "prettier .  --write"
   },
   "dependencies": {
